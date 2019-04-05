@@ -1,0 +1,279 @@
+/**{ /*selector universal:aplica los cambios a todos los elementos*/
+/*}*/
+*{
+    margin: 0;
+    padding:0;
+}
+body{
+    margin:auto; /* El elemento se centre en la página,*/
+    width: 90%;     /*tenga un ancho del 90% de la ventana*/
+    max-width: 1200px; /* su ancho nunca sea superior a 1200 pixeles.*/
+  /*  border-style: solid;*/
+    background-color:gray;  /*se modificaran los parametros de todo el documentosd*/
+    font-family: "Umpush";
+}
+
+h1{ /*titulo de la pagina*/
+    color:white;
+    font-family: "DejaVu Serif";
+    font-size: 3em;
+    text-align: center;
+
+}
+
+header, .wrapper, footer{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header nav{
+    padding: 5px;
+    background: #528fd5;
+    overflow: hidden;
+    height:60px;
+    border-radius: 10px;
+    border: white solid 1px;
+
+}
+
+header nav ul{
+    list-style-type: none;
+}
+
+header nav ul li{
+    float: left;
+}
+
+header nav ul li button:hover{
+    background: #75acec;
+
+}
+
+
+#barra-nav2 ul{
+    list-style-type: none;
+
+}
+
+#txtComandos{
+    width: 90%;
+    height: 10rem;
+    display: block;
+    border-radius:10px;
+ 
+}
+
+#texto_monitor{
+
+    position: relative;;
+    left:1rem;
+    bottom:15.6rem;
+    width: 19.7rem;
+    height:180px;
+    border-radius: 10px;
+}
+
+
+#cpu{
+    position: relative;
+    top: 4rem;
+}
+
+#txtKernel, #txtMemoria{
+    display:block;
+    position:relative;
+    text-align:center;
+    width:6rem;
+    border-radius: 5px;
+    bottom: 21rem;
+    left: 1rem;
+    margin-bottom:10px;
+}
+.lblKernel, .lblMemoria{
+    display: block;
+    width: 6rem;
+    position: relative;
+    text-align:center;
+    bottom: 21rem;
+    left: 1rem;
+    margin-bottom:10px;
+
+}
+
+.lblAvisoModo{
+    position: relative;
+    border-radius: 5px;
+    bottom: 16rem;
+    background: #e6e6e6;
+    left: 1rem;
+
+}
+
+.variables-acumulador{  /*Div contenedor de las caja texto de variables, al igual que el acumulador*/
+    border-style: solid;
+    width: 45%;
+    height: 13rem;
+    padding: 5px;
+}
+
+#lblAcumulador,#txtAcumulador,#lblVariables,#txtVariables{
+    display: block;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.variables-acumulador label{
+    background: gray;
+    border-radius: 5px;
+  
+}
+
+#btnOn,#btnOff{
+    position:relative;
+    width:5rem;
+    height: 3rem;
+    border-radius: 10px;
+    bottom: 12rem;
+    left:5rem;
+    background: #e6e6e6;
+}
+
+#index-planificacion{
+    position: relative;
+    bottom: 10rem;
+    left: 5rem;
+    
+}
+
+#index-planificacion select{
+    padding: 6px;
+    background: gray;
+    color: #ffffff;
+
+}
+
+#btnOn:hover, #btnOff:hover, #btnEjecutar:hover,#cargarArchivo:hover,#btnCargarMemoria:hover{
+    background:#b4b4b4;
+    cursor: pointer;
+}
+
+#btnEjecutar,#btnCargarMemoria,#btnEjecutarP{
+    position:relative;
+    width:5rem;
+    height: 3rem;
+    border-radius: 10px;
+    left: 4rem;
+    bottom: 1rem;
+    background: #e6e6e6;
+
+}
+
+#btnCargarMemoria{
+    bottom: 1.5rem;
+}
+
+
+#impresion{     /*Div contenedor de la impresora*/
+
+     position: relative;
+     bottom: 5rem;
+ 
+ }
+
+
+ #texto_impresion{
+    width:50%;
+    position: relative;
+    bottom: 1rem;
+    left: 4.3rem;
+    border-radius:10px;
+    text-align: center;
+    max-width: 60%;
+    max-height:200px;
+}
+
+
+#ch{    /*Label CH de la impresora*/
+    position: relative;
+    left: 11rem;
+    bottom: 10rem;
+
+}
+
+#btnPrioridad,#btnAcerca,#btnPasoP,#btnSiguiente,#btnReproducir,#btnMasCorto{
+    height: 4em;
+    width: 10em;
+}
+
+.wrapper{
+    background: #EC781A;
+    border: white solid 1px;
+    overflow: hidden;
+    border-radius: 10px;
+
+}
+.wrapper .main{
+    width: 48%;
+    float: left;
+    margin-right:1.5%;
+    padding: 20px;
+    box-sizing: border-box;
+
+
+}
+
+aside{
+    width: 48%;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+table {
+    margin: auto;
+    width:30rem;
+    border-collapse: collapse; /*Colapsa los bordes de las celdas*/
+    background-color: white;
+    text-align:center;
+    border-style: solid;
+    table-layout: auto;
+    border-radius: 10px;
+
+}
+td{
+    height: 10px;
+}
+
+th,td{ /*Aqui modificaremos los estilos de las celdas de las tablas*/
+    border: solid 1px black;
+    width: 30%;
+    padding: 0.3rem; /*incrementa el espacio entre celdas*/
+}
+thead{ /*Aqui se modificaran los aspectos del encabezado*/
+    background-color: green;
+    color: white;
+    border-bottom: darkblue; /*Limitante entre el encabezado y las celdas*/
+    border-style: solid;
+}
+tr:nth-child(even){ /*Escoje los hijos par del elemento y los colorea*/
+    background-color: #dddddd;
+}
+
+tr:hover td{ /*Controlar la iluminacion las celdas al pasar el cursor encima de los elementos*/
+    background-color: green;
+    color: white;
+}
+
+
+footer{
+    color: white;
+    text-align: center;
+    background: #528fd5;
+    padding: 10px 0px;
+    clear: both;
+    border-radius: 10px;
+    border: white solid 1px;
+}

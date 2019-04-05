@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CH Maquina</title>
+    <script type="module" src="javascript/main.js"></script> <!--Enlazamos el archivo javascript codigo.js-->
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" media="screen"> <!--Enlazamos nuestra hoja de estilos-->
+
+</head>
+<body>
+    <header> <!--Creamos nuestro encabezado donde generalmente van el logotipo  y nuestra barra de navegacion-->
+
+        <h1>CHMAQUINA</h1>
+        <div>
+        </div>
+
+        <nav>
+            <!--Encargado de crear nuestro menu principal para la aplicacion (barra de navegacion)-->
+            <ul>
+                <li><button name="btnAcerca" id="btnAcerca" type="button">Acerca De</button></li>
+                <li><button name="Siguiente" id="btnSiguiente" type="button">Siguiente</button></li>
+                <li><button name="prioridad" id="btnMasCorto" type="button">Siguiente Más Corto</button></li>
+                <li><button name="prioridad" id="btnPrioridad" type="button">Prioridad</button></li>
+            </ul>   
+
+        </nav>
+    </header>
+    <br>
+        <section class="wrapper"> <!--"contenedor"encierra nuestro contenido principal, al igual que el contenido secundario-->
+            <section class="main"> <!--Contenido principal-->
+                <article>   <!--Contenido al cual los buscadores haran enfasis en sus busquedas-->
+                    <div id="barra-nav2"> <!--al igual que los botones de la barra de navegacion secundaria-->
+                        <ul>
+                            <br/>
+                            <div id="cargarArchivo">
+                                <li><input ty name="btnCargar" type="file" id="btnCargar"disabled="disabled"></input> </li>
+                            </div>
+
+                        </ul>
+                    </div>
+                    
+                    <br/>
+                    <div id="textArea-ch"> <!--Este div identifica los elementos pertenecientes a la caja de ingreso de comandos
+                    del lenguaje ch -->
+                        <textarea rows="4" cols="50" placeholder="ingrese su lista de comandos"spellcheck="false" id="txtComandos" readonly="readonly"></textarea>
+                        <br/>
+                        <button type="button" name="btnCargarMemoria" id="btnCargarMemoria" disabled="disabled">Cargar En Memoria</button>
+                        <button type="button" name="btnEjecutar" id="btnEjecutar" disabled="disabled">Ejecutar</button>
+                        <button type="button" name="btnEjecutarP" id="btnEjecutarP" disabled="disabled">Paso Paso</button>
+                        
+                    </div>
+                    <div id="monitor"> <!--Elementos graficos tales como el monitor,el cpu y la caja de visualizacion de texto correspondiente-->
+                        <img src="images/monitor.jpg" alt="Monitor de visualizavion" width="350",heigth="240">
+                        <textarea rows="10" cols="35" name="texto_monitor" id="texto_monitor" placeholder="sistema ch" readonly="readonly"></textarea>
+                        <div class="boton-on-off">
+                            <button name="btnOn" id="btnOn" type="button">On</button>
+                            <button name="btnOff" id="btnOff" type="button" disabled="disabled">Off</button>
+                        </div>
+
+                    </div>
+
+                    <div class="index-planificacion" id="index-planificacion">
+                        <select name="index-select-planificacion" id="index-select-planificacion">
+                            <option value="0">Seleccione Una Opcion</option>
+                            <option value="1">FCFS</option>
+                            <option value="2">Prioridad No Expropiativo</option>
+                            <option value="3">Prioridad Expropiativo</option>
+                            <option value="4">SJF No Expropiativo</option>
+                            <option value="5">SJF Expropiativo</option>
+                            <option value="6">ROUND-ROBIN</option>
+                            
+                        </select>
+                    </div>
+
+                    <div id="impresion">
+                            <label id="ch" >CH</label>
+                            <img src="images/impresora.png" alt="imprima sus resultados" width="302" height="200">
+                            <textarea rows="6" cols="20" id="texto_impresion" placeholder="imprima sus resultados" readonly="readonly"></textarea>
+                    </div>
+                </article>
+
+                
+
+            </section>
+
+            <aside> <!--Contenido secundario (Imagenes-Publicidad-etc) En este caso estamos colocando alli la impresion-->
+
+                <div id="cpu">
+                    <img src="images/cpu.png" alt="cpu" width="216" height="340">
+                    <label for="txtKernel" class="lblKernel">Kernel</label>
+                    <input type="text" name="txtKernel" id="txtKernel" placeholder="(mayor a 10)">
+                    <label for="txtMemoria" class="lblMemoria">Memoria</label>
+                    <input type="text" name="txtMemoria" id="txtMemoria" placeholder="ingresar valor">
+                    <label class="lblAvisoModo" id="lblAvisoModo">Modo Kernel</label> <!--Este label permite al usuario informarle si
+                    la maquina esta trabajando en modo usuario o en modo kernel-->
+                </div>
+
+                <article class="variables-acumulador"> <!--Aqui colocaremos lo relacionado con la visualizacion de las variables del sistema y el acumulador-->
+                    <label for="txtAcumulador" id="lblAcumulador">Acumulador</label>
+                    <input type="text" name="txtAcumulador" id="txtAcumulador" readonly="readonly" placeholder="sin valores">
+                    <br/>
+                    <label for="txtVariables" id="lblVariables">Variables</label>
+                    <textarea id="txtVariables" name="textVariables" rows="6" placeholder="sin variables" cols="20" readonly="readonly"></textarea>
+                </article>
+                
+                <br/>
+
+                <div id="mapa_memoria">
+                    <table id="tablaMemoria">
+                        <thead> <!--El encabezado de la tabla-->
+                            <tr>
+                                <th><strong>Elemento</strong></th>
+                                <th><strong>Posicion</strong></th>
+                                <th><strong>Etiquetas</strong></th>
+
+                            </tr>
+                        </thead>
+                        <!--<tr>
+                            <td>Elemento1</td>
+                            <td>00</td>
+
+                        </tr>
+                        <tr>
+                            <td>Elemento2</td>
+                            <td>01</td>
+                        </tr>-->
+
+                    </table>
+                </div>
+
+                
+
+            </aside>
+
+        </section>
+    <br>
+
+    <footer> <p> CHMaquina V.2018/2</p></footer> <!--Pie de pagina-->
+
+</body>
+</html>
