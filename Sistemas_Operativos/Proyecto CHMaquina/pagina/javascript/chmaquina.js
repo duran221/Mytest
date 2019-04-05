@@ -1731,7 +1731,37 @@ para indicar al compilador que no ejecute la this.instruccion, solo verifique si
     }
 
     ejecutarRoundRobin=(listaProgramas)=>{
-        print("hola");
+        //La lista Round robin contiene el estado de los procesos en cola.
+        this.listaRoundRobin=[];
+        this.acumulador=0;
+
+        //Extraiga el primer procesito:
+        this.programaElegido=new Proceso(listaProgramas.shift());
+
+        this.vectorInstrucciones=this.programaElegido.infoPrograma[2];
+        //El metodo formatea los comandos en array entendibles para ser ejecutados
+        this.convertirVectorInstrucciones();
+
+        this.instruccion=true;
+
+        //Asigna a el objeto proceso una copia de los comandos:
+        programaElegido.copiaInstrucciones = this.infoPrograma[2].slice();
+        //Cantidad de lineas de instrucción que contiene el proceso:
+        programaElegido.longitudPrograma=programaElegido.copiaInstrucciones.length;
+        //Obtiene un array formateado listo para ser ejecutado:
+        programaElegido.arrayFormateado=this.formatearCadena(this.copiaInstrucciones);
+     
+        this.limpiarInterfaz();
+        for(let i=0;i<contador; i++){
+            let comando = this.quitarEspacios(this.copiaInstrucciones);
+            this.ejecutarInstrucciones(comando, 1);
+
+        }
+        
+        this.eliminarTabla();
+        this.generarTabla(false);
+
+
     }
 
 
