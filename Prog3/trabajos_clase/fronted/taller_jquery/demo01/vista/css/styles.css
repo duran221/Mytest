@@ -1,0 +1,26 @@
+/* 
+   Ver http://librosweb.es/libro/css/  
+       https://www.w3schools.com/cssref/ 
+*/
+
+/* selector de tipo o etiqueta (todas las tablas tendrán este estilo) */
+table,
+th,
+td {
+    /* afecta a todas las tablas */
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+/* selector de clase (afecta a las etiquetas que definan esta clase) */
+.resaltado {
+    /* class css */
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* selector de ID (sólo afecta a un elemento identificado como "subtitulo") */
+#subtitulo {
+    color: red;
+    font-weight: bold;
+}

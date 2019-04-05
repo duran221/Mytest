@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Ahorcado</title>
+
+    <link rel="stylesheet" href="./vista/libs/iconfont/material-icons.css" />
+
+    <link rel="stylesheet" href="./vista/libs/materialize/css/materialize.min.css" media="screen,projection" />
+    <script src="./vista/libs/materialize/js/materialize.min.js"></script>
+
+    <script type="module" src="./vista/js/main.js"></script>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="input-field col s3 offset-s2">
+            <select id="index-categorias">
+                      <option value="0">Paises latinoamericanos</option>
+                      <option value="1">Sistemas operativos</option>
+                      <option value="2">Frutas</option>
+                      <option value="3">Frutas</option>
+                      <option value="4">Instrumentos musicales</option>
+                    </select>
+            <label>Categorías de palabras</label>
+        </div>
+
+        <div class="input-field col s1 offset-s1">
+            <input type="number" id="index-intentos" name="index-intentos" value="3" min="3" max="8" class="validate" />
+            <label for="index-intentos">Intentos</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="div-imagen" class="col s2 center-align offset-s2"> </div>
+        <div id="div-tabla-letras" class="col s6 card-panel orange lighten-4"> </div>
+        <h2 id="index-palabra" class="col s12 center-align">--- * ---</h2>
+    </div>
+
+    <div class="row">
+        <div id="div-intentos" class="col s3 offset-s2 teal lighten-2 card-panel">&nbsp;</div>
+        <div id="div-segundos" class="col s3 teal lighten-2 card-panel">&nbsp;</div>
+        <div class="col s3 right-align">
+            <a id="btn-inicio-juego" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Que inicie el juego</a>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

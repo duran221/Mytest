@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Plantilla base de proyectos</title>
+
+    <link rel="stylesheet" href="./vista/libs/iconfont/material-icons.css" />
+
+    <link rel="stylesheet" href="./vista/libs/materialize/css/materialize.min.css" media="screen,projection" />
+    <script src="./vista/libs/materialize/js/materialize.min.js"></script>
+
+    <script src="./vista/libs/getEventsListeners.js"></script>
+
+    <script type="module" src="./vista/js/main.js"></script>
+</head>
+
+<body>
+    <div id="div0" class="row">
+        <div id="div1" class="col s8 offset-s2">
+            <table id="tabla-imagenes">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Item Name</th>
+                        <th>Item Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>$0.87</td>
+                    </tr>
+                    <tr>
+                        <td>Alan</td>
+                        <td>Jellybean</td>
+                        <td>$3.76</td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Lollipop</td>
+                        <td>$7.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="div3" class="col s8 offset-s2">
+            <div class="input-field col s12">
+                <textarea id="txtDOM" class="materialize-textarea"></textarea>
+                <label for="txtDOM">Algunos aspectos del DOM</label>
+            </div>
+        </div>
+
+        <div id="div2" class="col s10 right-align">
+            <a id="btn-hacer-algo" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Hacer algo</a>
+            <a id="btn-comprobar" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Comprobar</a>
+            <a id="btn-prueba1" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Prueba 1</a>
+            <a id="btn-prueba2" class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Prueba 2</a>
+            <button id="btn-prueba3" class="waves-effect waves-light btn" onclick="console.log('Hola mundo')">Prueba 3</button>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>

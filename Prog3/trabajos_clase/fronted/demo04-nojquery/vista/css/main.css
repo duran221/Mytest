@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+/* las siguientes instrucciones se requieren para fijar el pie de página en la parte inferior */
