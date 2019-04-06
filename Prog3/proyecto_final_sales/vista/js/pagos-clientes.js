@@ -32,7 +32,8 @@ new class PagoCliente {
             listaSeleccionable: '#pago_cliente-cliente',
             clave: 'id_cliente',
             valor: 'nombre',
-            primerItem: 'Seleccione el cliente que va a pagar'
+            primerItem: 'Seleccione el cliente que va a pagar',
+            info: 2
         }).then(() => {
             $('#pago_cliente-cliente').value = '';
             M.FormSelect.init($('#pago_cliente-cliente'));

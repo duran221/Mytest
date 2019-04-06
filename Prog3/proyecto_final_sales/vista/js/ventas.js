@@ -47,7 +47,8 @@ new class Venta {
             listaSeleccionable: '#venta-cliente',
             clave: 'id_cliente',
             valor: 'nombre',
-            primerItem: 'Seleccione un cliente'
+            primerItem: 'Seleccione un cliente',
+            info: 1
         }).then(() => {
             $('#venta-cliente').value = '';
             M.FormSelect.init($('#venta-cliente'));

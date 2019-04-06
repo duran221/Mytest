@@ -13,7 +13,8 @@ new class Cliente {
 
         this.parametros = { // parámetros que se envían al servidor para mostrar la tabla
             clase: 'Cliente',
-            accion: 'seleccionar'
+            accion: 'seleccionar',
+            condicion: 1
         };
 
         this.columnas = [ // este array de objetos define las columnas de la tabla
