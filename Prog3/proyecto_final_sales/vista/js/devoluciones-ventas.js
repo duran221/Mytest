@@ -46,7 +46,8 @@ new class DevolucionVenta {
             listaSeleccionable: '#devolucion_venta-cliente',
             clave: 'id_cliente',
             valor: 'nombre',
-            primerItem: 'Seleccione un cliente'
+            primerItem: 'Seleccione un cliente',
+            info: 2
         }).then(() => {
             $('#devolucion_venta-cliente').value = '';
             M.FormSelect.init($('#devolucion_venta-cliente'));

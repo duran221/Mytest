@@ -112,15 +112,18 @@ class Cliente implements Persistible{
     public function listar($param) {
         extract($param);
         $sql="";
-        if($condicion==1){
+        error_log($data);
+
+        if($data==1){
             $sql = "SELECT id_cliente, nombre, telefonos, direccion, con_credito
                     FROM clientes
                     ORDER BY nombre";    
         }else{
-            $sql = "SELECT id_cliente, nombre, telefonos, direccion, con_credito
-                    FROM clientes
+            $sql = "SELECT DISTINCT cl.id_cliente id_cliente,nombre
+                    FROM clientes cl JOIN ventas ven ON cl.ID_CLIENTE=ven.ID_CLIENTE
                     ORDER BY nombre";    
         }
+
 
         
         // se ejecuta la instrucción SQL, para obtener el conjunto de resultados (si los hay) como un objeto PDOStatement
