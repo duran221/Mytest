@@ -36,6 +36,8 @@ export default class ChMaquina {
 
         this.condi = true;
         this.proces= new Proceso();
+        //El quantum es usado en métodos como el round-robin y me permite definir cada cuando se cambia de contexto:
+        this.quantum=0;
 
     }
 
@@ -45,6 +47,12 @@ export default class ChMaquina {
         //Al encender el sistema primero obtenga el valor que corresponde al metodo de planificación seleccionado:
         let selectPlanificacion=document.querySelector('#index-select-planificacion');
         this.planificacion=selectPlanificacion.value;
+        if(this.planificacion==6){
+            this.quantum=prompt("Introduzca el quantum (Unidades de tiempo,por defecto se inicia en 5)");
+            if(this.quantum===''){
+                this.quantum=5;
+            }
+        }
         selectPlanificacion.disabled=true;
         
         this.encendido = true;
@@ -1521,7 +1529,14 @@ dentro un un arreglo listo para ser introducido en memoria principal*/
             //Si la opción seleccionada fué la 3 (Prioridad), pregunte que prioridad decea asignar a el proceso y asignesela al final:
             if(document.querySelector("#index-select-planificacion").value=="2"){
                 let prioridad= prompt("Introduzca una prioridad para el proceso");
-                this.infoPrograma.push(prioridad);
+                if(prioridad>100 || prioridad<0){
+                    alert("Numero de prioridad introducido es invalido.");
+                    return;
+                }else{
+
+                    this.infoPrograma.push(prioridad);
+
+                }
             }
             for (let i = cont; i < limite; i++) {
                 //El metodo shift extrae el primer elemento del array:
@@ -1642,24 +1657,23 @@ para indicar al compilador que no ejecute la this.instruccion, solo verifique si
      * @param:{listaProgramas}: lista circular que contiene cada proceso almacenado en memoria.
      */
     ejecucionPrioridadNoExpropiativo=(listaProgramas)=>{
-        //Primer caso: El proceso más corto:
         this.infoPrograma=[];
         this.acumulador=0;
         //Obteniendo la prioridad del programa:
-        let menor=listaProgramas[0][6];
+        let mayor=listaProgramas[0][6];
         let programaElegido=listaProgramas[0];
 
         for(let prog of listaProgramas){
-            if(prog[6]<=menor){
+            if(prog[6]>=mayor){
                 programaElegido=prog;
-                menor=prog[6];
+                mayor=prog[6];
             }
 
         }
         
         //Obteniendo la posición del programa elegido:
         let posicion=listaProgramas.indexOf(programaElegido);
-        //Se extrae el proceso con menor linea de instrucciones:
+        //Se extrae el proceso con mayor prioridad:
         this.infoPrograma= listaProgramas.slice(posicion)[0];
         this.vectorInstrucciones=this.infoPrograma[2];
         //El metodo formatea los comandos en array entendibles para ser ejecutados
@@ -1736,31 +1750,41 @@ para indicar al compilador que no ejecute la this.instruccion, solo verifique si
         this.acumulador=0;
 
         //Extraiga el primer procesito:
-        this.programaElegido=new Proceso(listaProgramas.shift());
+        let procesoElegido=new Proceso(listaProgramas.shift());
 
-        this.vectorInstrucciones=this.programaElegido.infoPrograma[2];
+        this.vectorInstrucciones=procesoElegido.infoPrograma[2];
         //El metodo formatea los comandos en array entendibles para ser ejecutados
         this.convertirVectorInstrucciones();
 
         this.instruccion=true;
 
         //Asigna a el objeto proceso una copia de los comandos:
-        programaElegido.copiaInstrucciones = this.infoPrograma[2].slice();
+        procesoElegido.copiaInstrucciones = this.infoPrograma[2].slice();
         //Cantidad de lineas de instrucción que contiene el proceso:
-        programaElegido.longitudPrograma=programaElegido.copiaInstrucciones.length;
+        procesoElegido.longitudPrograma=procesoElegido.copiaInstrucciones.length;
+        this.copiaInstrucciones=procesoElegido.copiaInstrucciones;
         //Obtiene un array formateado listo para ser ejecutado:
-        programaElegido.arrayFormateado=this.formatearCadena(this.copiaInstrucciones);
-     
+        this.copiaInstrucciones=this.formatearCadena(this.copiaInstrucciones);
+        procesoElegido.arrayFormateado=this.copiaInstrucciones.slice();
+        this.listaRoundRobin.push(procesoElegido);
+        let contador=procesoElegido.arrayFormateado.length;
         this.limpiarInterfaz();
-        for(let i=0;i<contador; i++){
+        for(let i=0;i<contador-1; i++){
             let comando = this.quitarEspacios(this.copiaInstrucciones);
-            this.ejecutarInstrucciones(comando, 1);
+            if(comando!=''){
+                this.ejecutarInstrucciones(comando, 1);
+
+            }
 
         }
         
         this.eliminarTabla();
         this.generarTabla(false);
 
+
+    }
+
+    cambiarContexto= () =>{
 
     }
 
