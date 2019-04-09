@@ -842,7 +842,61 @@ BEGIN
 	END IF;
 
 	RETURN id_devolucion;
-COMMIT;
+END;
+$BODY$;
+
+-- la función registra la devolucion de una compra y los detalles de devolucion de compra
+CREATE OR REPLACE FUNCTION insertar_devolucion_compra(datos_devolucion JSON)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+AS $BODY$
+DECLARE
+	i INTEGER;
+	id_devolucion INTEGER;
+	idproducto INTEGER;
+	idcompra INTEGER;
+	fecha DATE;
+	proveedor VARCHAR;
+	cant INTEGER;
+	candidad_disponible INTEGER;
+	linea_devolucion RECORD;
+BEGIN
+	idcompra = 0;
+	-- transfiere a variables las propiedades del objeto JSON 'datos_venta', excepto el array 'detalle'
+	SELECT (datos_devolucion#>>'{fecha_devolucion}')::DATE FROM json_each(datos_devolucion) WHERE key = 'fecha_devolucion' INTO fecha;
+	SELECT (datos_devolucion#>>'{compra}')::INTEGER FROM json_each(datos_devolucion) WHERE key = 'compra' INTO idcompra;
+	
+	INSERT INTO devoluciones_compras(id_compra,fecha_devolucion)
+		VALUES (idcompra,fecha) 
+		RETURNING id_devolucion_compra INTO id_devolucion;
+	
+	IF id_devolucion > 0 THEN
+		-- recorre las filas correspondientes a cada detalle de venta
+		FOR linea_devolucion IN
+			-- expande el array de objetos 'detalle' a un conjunto de filas de tipo 'tipo_detalle'
+			SELECT * FROM json_populate_recordset(null::tipo_detalle, (
+				-- recupera el JSON correspondiente a la propiedad 'detalle'
+				SELECT value FROM json_each(datos_devolucion) WHERE key = 'detalle')
+			) LOOP
+
+			--Se castea el item del bloque anonimo
+			idproducto= linea_devolucion.id_producto::integer;
+			
+			-- por cada detalle, inserta una línea de compra.
+			INSERT INTO detalles_devoluciones_compras(id_devolucion_compra,id_producto,cantidad)
+				VALUES (id_devolucion,idproducto,linea_devolucion.cantidad_devuelta);
+
+			-- en productos, sustraer la cantidad vendida de la cantidad_disponible 
+			UPDATE productos SET cantidad_disponible = cantidad_disponible - linea_devolucion.cantidad_devuelta 
+				WHERE id_producto = linea_devolucion.id_producto;
+
+			UPDATE DETALLES_COMPRAS SET cantidad_recibida=cantidad_recibida-linea_devolucion.cantidad_devuelta;
+
+		END LOOP;
+	END IF;
+
+	RETURN id_devolucion;
+END;
 $BODY$;
 
 
